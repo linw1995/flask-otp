@@ -1,10 +1,12 @@
 # flask-otp
-============
 
 This extension simply makes One-Time Password by using pyotp, qrcode
 
+# Install
+
+    pip install flask-otp
+
 # Quick Start
------------
     from flask import Flask, session, send_file
     from flask_otp import OTP
 

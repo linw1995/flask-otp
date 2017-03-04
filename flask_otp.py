@@ -29,21 +29,24 @@ class OTP:
         """
         verify the One-Time password with key
         """
-        p = 0
         try:
             p = int(otp)
-        except:
+        except ValueError:
             return False
-        t = pyotp.TOTP(key)
-        return t.verify(p)
+        else:
+            t = pyotp.TOTP(key)
+            return t.verify(p)
 
     @staticmethod
     def qr(key):
         """
-        get qrcode image bytes
+        get qrcode image BytesIO
+        >>>from flask import Flask
         >>>from flask_otp import OTP
-        >>>otp = OTP.init_app(app)
-        >>>img = otp.qr(key) # bytesIO
+        >>>app = Flask(__name__)
+        >>>otp = OTP()
+        >>>otp.init_app(app)
+        >>>img = otp.qr(key) # BytesIO
         >>># to file
         >>>with open("filename.png", "wb") as f:
         >>>    f.write(img.read())
