@@ -1,7 +1,13 @@
+# -*- coding:utf-8 -*-
+import six
 import qrcode
 import pyotp
-from io import BytesIO
 from flask import current_app
+
+if six.PY2:
+    from StringIO import StringIO as BytesIO
+else:
+    from io import BytesIO
 
 __author__ = "linw"
 
